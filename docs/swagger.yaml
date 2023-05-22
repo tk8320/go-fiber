@@ -24,7 +24,7 @@ definitions:
       title:
         type: string
     type: object
-host: localhost:3000
+host: go-fiber-app.onrender.com
 info:
   contact:
     email: support@swagger.io
@@ -179,5 +179,5 @@ paths:
       tags:
       - root
 schemes:
-- http
+- https
 swagger: "2.0"

@@ -4,8 +4,9 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
+	_ "github.com/go-sql-driver/mysql"
+	. "go-fiber/models"
 	"log"
-	. "main/models"
 	"strings"
 	"time"
 )
@@ -24,10 +25,12 @@ func InitContext() Context {
 		log.Fatalln("Unable to connect to the database. Closing service...")
 	}
 
-	// err = Db.Ping()
-	// if err != nil {
-	// 	log.Fatalln("Unable to connect to the database. Closing service...")
-	// }
+	err = Db.Ping()
+	if err != nil {
+		log.Fatalln("Unable to connect to the database. Closing service...")
+	} else {
+		log.Println("Connected to the mysql")
+	}
 	return Context{Db}
 }
 
@@ -138,6 +141,19 @@ func (ctx Context) DeleteBlogByID(id int64) error {
 	if r == 0 {
 		return errors.New("404 not found")
 	}
+	//defer res.Close()
+	return nil
+}
+
+func (ctx Context) TruncateBlog() error {
+	query := "TRUNCATE TABLE tbl_blogs"
+
+	_, err := ctx.Db.Exec(query)
+	if err != nil {
+		log.Print(err)
+		return err
+	}
+
 	//defer res.Close()
 	return nil
 }

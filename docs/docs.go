@@ -282,7 +282,7 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "2.0",
-	Host:             "https://go-fiber-app.onrender.com",
+	Host:             "go-fiber-app.onrender.com",
 	BasePath:         "/",
 	Schemes:          []string{"http"},
 	Title:            "Fiber Swagger Example API",

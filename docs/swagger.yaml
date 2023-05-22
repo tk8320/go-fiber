@@ -1,0 +1,183 @@
+basePath: /
+definitions:
+  models.Blog:
+    properties:
+      body:
+        type: string
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      title:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.BlogPatch:
+    properties:
+      body:
+        type: string
+      description:
+        type: string
+      title:
+        type: string
+    type: object
+host: localhost:3000
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a sample server server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Fiber Swagger Example API
+  version: "2.0"
+paths:
+  /api/blog-post:
+    get:
+      consumes:
+      - '*/*'
+      description: List all blog post.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Blog'
+            type: array
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: List all Blog Post.
+      tags:
+      - root
+    post:
+      consumes:
+      - application/json
+      description: Create A Blog Post.
+      parameters:
+      - description: Request Body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.BlogPatch'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Created Successfully
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      tags:
+      - root
+  /api/blog-post/{id}:
+    delete:
+      consumes:
+      - '*/*'
+      description: Delete Post by ID.
+      parameters:
+      - description: Post ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Deleted Successfully
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Delete Post by Id.
+      tags:
+      - root
+    get:
+      consumes:
+      - '*/*'
+      description: Get Post by ID.
+      parameters:
+      - description: Post ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Blog'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get Post by Id.
+      tags:
+      - root
+    patch:
+      consumes:
+      - '*/*'
+      description: Update Post by ID.
+      parameters:
+      - description: Post ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Request Body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.BlogPatch'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Updated Successfully
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Update Post by Id.
+      tags:
+      - root
+schemes:
+- http
+swagger: "2.0"

@@ -51,8 +51,8 @@ func GetAllPost(c *fiber.Ctx) error {
 		return c.SendStatus(fiber.StatusNotFound)
 	}
 	
-	if len(data) == 0{
-		c.Status(fiber.StatusNotFound).SendString("No Data Found")
+	if len(data) == 0 {
+		return c.Status(fiber.StatusNotFound).SendString("No Data found")
 	}
 	return c.Status(fiber.StatusOK).JSON(data)
 }

@@ -1,4 +1,5 @@
-module main
+module go-fiber
+
 
 go 1.20
 

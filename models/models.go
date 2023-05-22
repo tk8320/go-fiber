@@ -4,7 +4,10 @@ import (
 	"time"
 )
 
+// swagger:model Blog
 type Blog struct {
+	// The ID of Post
+
 	Id          int       `json:"id"`
 	Title       string    `json:"title"`
 	Description string    `json:"description"`
@@ -13,6 +16,7 @@ type Blog struct {
 	Updated_At  time.Time `json:"updated_at,omitempty"`
 }
 
+// swagger:model BlogPatch
 type BlogPatch struct {
 	Title       *string `json:"title,omitempty"`
 	Description *string `json:"description,omitempty"`

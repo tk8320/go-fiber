@@ -284,7 +284,7 @@ var SwaggerInfo = &swag.Spec{
 	Version:          "2.0",
 	Host:             "go-fiber-app.onrender.com",
 	BasePath:         "/",
-	Schemes:          []string{"http"},
+	Schemes:          []string{"https"},
 	Title:            "Fiber Swagger Example API",
 	Description:      "This is a sample server server.",
 	InfoInstanceName: "swagger",

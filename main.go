@@ -21,7 +21,7 @@ import (
 
 // @host go-fiber-app.onrender.com
 // @BasePath /
-// @schemes http
+// @schemes https
 func main() {
 
 	app := fiber.New()

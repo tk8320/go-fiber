@@ -9,6 +9,7 @@ import (
 	"go-fiber/handlers"
 	"go-fiber/models"
 	"log"
+	"os"
 	"strconv"
 	"time"
 )
@@ -154,7 +155,7 @@ func UpdatePost(c *fiber.Ctx) error {
 
 func Truncate(c *fiber.Ctx) error {
 	var cred map[string]string
-	secret_key := "Password@123"
+	secret_key := os.Getenv("SECRET_KEY")
 	if err := c.BodyParser(&cred); err != nil {
 		return c.Status(fiber.StatusBadRequest).SendString("Unable to Truncate" + err.Error())
 	}

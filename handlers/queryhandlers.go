@@ -7,6 +7,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	. "go-fiber/models"
 	"log"
+	"os"
 	"strings"
 	"time"
 )
@@ -17,9 +18,9 @@ type Context struct {
 
 func InitContext() Context {
 	log.Println("Initiating the database connection")
-	// dsn := fmt.Sprintf("go_root:%s@tcp(db4free.net:3306)/go_microservice?charset=utf8&parseTime=True", "Password!123")
-	// log.Println(dsn)
-	Db, err := sql.Open("mysql", "go_root:Password!123@tcp(db4free.net:3306)/go_microservice?parseTime=True")
+	mysqlpass := os.Getenv("MYSQL_PASS")
+	dsn := fmt.Sprintf("go_root:%s@tcp(db4free.net:3306)/go_microservice?charset=utf8&parseTime=True", mysqlpass)
+	Db, err := sql.Open("mysql", dsn)
 	if err != nil {
 		log.Print(err)
 		log.Fatalln("Unable to connect to the database. Closing service...")
